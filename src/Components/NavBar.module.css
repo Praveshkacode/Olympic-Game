@@ -35,4 +35,56 @@ nav {
     font-size: 20px;
     cursor: pointer;
   }
+
+  
+/* Responsive adjustments */
+@media (max-width: 1000px) {
+  nav {
+    height: 40px;
+    padding: 0 10px; 
+  }
+  
+  .logo img {
+    height: 30px;
+  }
+  
+  .rightContent{
+    margin-left: 200px;
+  }
+  
+  button {
+    padding: 3px 8px;
+    height: 25px;
+    border-radius: 5px;
+    font-size: 15px;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+ 
+    nav {
+    height: 30px;
+    padding: 0 5px; 
+  }
+  
+  .logo img {
+    height: 25px;
+  }
+  
+  .rightContent{
+    margin-left: 10px;
+    font-size: small;
+  }
+  
+  button {
+    padding: 1px 3px;
+    height: 20px;
+    border-radius: 5px;
+    font-size: 15px;
+  }
+  
+}
+
   

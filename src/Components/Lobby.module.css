@@ -68,3 +68,45 @@ h2{
     text-align: center;
     color: blue;
 }
+
+@media (max-width: 500px) {    
+    .mainNav{
+        width: 100%;
+        height: 30px;
+    }
+    
+    .logo img{
+        height: 27px;
+    }
+    
+    .score{
+        font-size: 20px;
+    }
+    
+    .chooseGame{
+        height: 30px;
+    }
+    
+    .btn{
+        height: 20px;
+    }
+
+    .show{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .playerList{
+        width: 100%;
+    }
+    .divider{
+        border-top: 3px solid red;
+    }
+    
+    .addedPlayers{
+        width: 100%;
+        
+    }
+  
+  }
+  
