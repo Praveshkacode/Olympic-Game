@@ -43,7 +43,7 @@
 
 .developerImage img {
     min-width: 200px; /* Adjust size as needed */
-    /* max-width: 470px;  developer */
+    /* max-width: 470px;  Developer */
     height: auto;
 }
 .ResultImage {
@@ -139,7 +139,7 @@ h2{
 
     .show{
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
         /* justify-items: center; */
     }
     

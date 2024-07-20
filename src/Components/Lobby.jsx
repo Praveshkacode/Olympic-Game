@@ -78,7 +78,7 @@ const Lobby = () => {
             // alert("Good Selection");
             setWinnerImage(Good);
         } else {
-            alert("Bad Selection");
+            alert("Bad Selection,Try Again");
             setWinnerImage(null);
         }
         setTimeout(() => setShowWinner(false), 2000); // Hide image after 2 seconds
