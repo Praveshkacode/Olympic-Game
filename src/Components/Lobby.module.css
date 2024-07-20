@@ -18,6 +18,11 @@
     height: 40px;
 }
 
+.score{
+    font-size: 25px;
+    font-weight: 500;
+}
+
 .chooseGame{
     display: flex;
     background-color: white;
@@ -47,11 +52,17 @@
 }
 
 .playerList{
-    min-width: 70%;
+    max-width: 81%;
+    margin: 0;
+}
+.divider{
+    border-left: 4px solid red;
+    /* margin: 5%; */
 }
 
 .addedPlayers{
     min-width: 30%;
+    
 }
 h2{
     text-align: center;

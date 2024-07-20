@@ -11,11 +11,18 @@ import { useNavigate } from 'react-router-dom';
 const Lobby = () => {
     const [addedPlayers, setAddedPlayers] = useState([]);
     const [currentType, setCurrentType] = useState(() => CricketPlayer); // Default component
+    const [score,setScore] = useState(0)
     const navigate = useNavigate();
 
     // Define handler functions
     const handleAddPlayer = useCallback((player) => {
-        setAddedPlayers(prevPlayers => [...prevPlayers, player]);
+        setAddedPlayers(prevPlayers => {
+            // Check if the player is already added
+            if (prevPlayers.some(p => p.id === player.id)) {
+                return prevPlayers; // Return the same array if the player is already added
+            }
+            return [...prevPlayers, player]; // Add the new player otherwise
+        });
     }, []);
 
     const handleDropPlayer = useCallback((playerId) => {
@@ -38,6 +45,7 @@ const Lobby = () => {
                     <img onClick={handleLogoClick} src={logo} alt="Logo" />
                 </div>
                 <button>Add Cash</button>
+                <p className={styles.score}>{score}</p>
             </div>
 
             <div className={styles.chooseGame}>
@@ -56,6 +64,8 @@ const Lobby = () => {
                     <h2>Players List</h2>
                     {/* Render the component and pass handlers */}
                     {React.createElement(currentType, { onAddPlayer: handleAddPlayer, onDropPlayer: handleDropPlayer })}
+                </div>
+                <div className={styles.divider}>
                 </div>
                 {addedPlayers.length > 0 && <AddedPlayers players={addedPlayers} onDropPlayer={handleDropPlayer} />}
             </div>
