@@ -1,0 +1,59 @@
+.mainPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.mainNav{
+    display: flex;
+    background-color: red;
+    min-width: 100%;
+    justify-content: space-around;
+    height: 50px;
+    align-items: center;
+}
+
+.logo img{
+    height: 40px;
+}
+
+.chooseGame{
+    display: flex;
+    background-color: white;
+    min-width: 100%;
+    justify-content: space-around;
+    height: 50px;
+    align-items: center;
+}
+
+.btn{
+    background-color: white;
+    border: 0px;
+    color: black;
+    border-radius: none;
+    height: 30px;
+}
+
+.btn.active{
+    background-color: red;
+    color: white;
+    font-weight: 700;
+}
+
+.show{
+    display: flex;
+    flex-direction: row;
+}
+
+.playerList{
+    min-width: 70%;
+}
+
+.addedPlayers{
+    min-width: 30%;
+}
+h2{
+    text-align: center;
+    color: blue;
+}

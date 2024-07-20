@@ -1,0 +1,38 @@
+
+nav {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; 
+    height: 72px;
+    align-items: center;
+    background-color: black;
+    color: white;
+    padding: 0 20px; 
+  }
+  
+  span {
+    color: #d01c28;
+  }
+  
+  .logo img {
+    height: 60px;
+  }
+  
+  .rightContent{
+    display: flex;
+    margin-left: 650px;
+    align-items: center;
+    font-size: large;
+  }
+  
+  button {
+    padding: 6px 16px;
+    background: #d01c28;
+    height: 35px;
+    color: white;
+    font-weight: 400;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  

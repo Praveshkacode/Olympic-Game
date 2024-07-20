@@ -1,0 +1,69 @@
+.playerList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px;
+}
+
+.playerBox {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    width: 220px;
+    background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+    transition: transform 0.2s;
+}
+
+.playerBox:hover {
+    transform: scale(1.05);
+}
+
+.playerName {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #ff69b4;
+    background: -webkit-linear-gradient(#ff69b4, #ff1493);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.playerDetails {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.buttonGroup {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.button {
+    flex: 1;
+    padding: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.addButton {
+    background-color: #4caf50;
+}
+
+.addButton:hover {
+    background-color: #45a049;
+}
+
+.dropButton {
+    background-color: #f44336;
+}
+
+.dropButton:hover {
+    background-color: #e53935;
+}
