@@ -5,7 +5,7 @@ const cricketPlayers = [
   { id: "c2", name: "Mitchell Starc", role: "Bowler", price: 900000, country: "Australia" },
   { id: "c3", name: "Ben Stokes", role: "AllRounder", price: 1200000, country: "England" },
   { id: "c4", name: "Kane Williamson", role: "Batsman", price: 950000, country: "New Zealand" },
-  { id: "c5", name: "Jasprit Bumrah", role: "Bowler", price: 850000, country: "India" },
+  { id: "c5", name: "Jasprit Bumrah", role: "Bowler", price: 900000, country: "India" },
   { id: "c6", name: "Andre Russell", role: "AllRounder", price: 1100000, country: "West Indies" },
   { id: "c7", name: "Joe Root", role: "Batsman", price: 980000, country: "England" },
   { id: "c8", name: "Pat Cummins", role: "Bowler", price: 920000, country: "Australia" },

@@ -1,5 +1,5 @@
 
-nav {
+  nav {
     margin: 0 auto;
     display: flex;
     justify-content: space-between; 
@@ -36,6 +36,14 @@ nav {
     cursor: pointer;
   }
 
+  .background {
+    background-image: url('../assets/bg.jpg');
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
   
 /* Responsive adjustments */
 @media (max-width: 1000px) {
@@ -64,13 +72,13 @@ nav {
 
 @media (max-width: 600px) {
  
-    nav {
-    height: 30px;
+  nav {
+    height: 40px;
     padding: 0 5px; 
   }
   
   .logo img {
-    height: 25px;
+    height: 30px;
   }
   
   .rightContent{
@@ -80,9 +88,12 @@ nav {
   
   button {
     padding: 1px 3px;
-    height: 20px;
+    height: 25px;
     border-radius: 5px;
     font-size: 15px;
+  }
+  .background {
+    background-image: url('../assets/o7.jpg');
   }
   
 }

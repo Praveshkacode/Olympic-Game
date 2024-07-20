@@ -1,6 +1,11 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import styles from "./Lobby.module.css";
 import logo from '../assets/logo.png';
+import Developer from '../assets/Developer.jpeg';
+import Money1 from '../assets/money1.png';
+import Money from '../assets/money.png';
+import Excellent from '../assets/Excellent.jpg';
+import Good from '../assets/Good.jpg';
 import CricketPlayer from './Players/CricketPlayer';
 import FootBallPlayer from './Players/FootBallPlayer';
 import HockeyPlayer from './Players/HockeyPlayer';
@@ -11,32 +16,78 @@ import { useNavigate } from 'react-router-dom';
 const Lobby = () => {
     const [addedPlayers, setAddedPlayers] = useState([]);
     const [currentType, setCurrentType] = useState(() => CricketPlayer); // Default component
-    const [score,setScore] = useState(0)
+    const [totalScore, setTotalScore] = useState(0);
+    const [cash, setCash] = useState(5000000);
+    const [showDeveloper, setShowDeveloper] = useState(false); // State to control image visibility
+    const [showWinner, setShowWinner] = useState(false); // State to control winner visibility
+    const [winnerImage, setWinnerImage] = useState(null); // State to control winner image
     const navigate = useNavigate();
 
     // Define handler functions
     const handleAddPlayer = useCallback((player) => {
-        setAddedPlayers(prevPlayers => {
-            // Check if the player is already added
-            if (prevPlayers.some(p => p.id === player.id)) {
-                return prevPlayers; // Return the same array if the player is already added
+        setAddedPlayers((prevPlayers) => {
+            if (prevPlayers.some(p => p.id === player.id) || prevPlayers.length >= 5) {
+                return prevPlayers;
             }
-            return [...prevPlayers, player]; // Add the new player otherwise
+            if (cash >= player.price) {
+                setCash(prevCash => prevCash - player.price);
+                const newPlayer = { ...player, score: Math.floor(Math.random() * 100) + 1 };
+                const updatedPlayers = [...prevPlayers, newPlayer];
+                if (updatedPlayers.length === 5) {
+                    handleWinner(updatedPlayers.reduce((sum, p) => sum + p.score, 0));
+                }
+                return updatedPlayers;
+            }
+            return prevPlayers;
+        });
+    }, [cash]);
+
+    const handleDropPlayer = useCallback((playerId) => {
+        setAddedPlayers((prevPlayers) => {
+            const playerToDrop = prevPlayers.find(player => player.id === playerId);
+            if (playerToDrop) {
+                setCash((prevCash) => prevCash + Math.floor(playerToDrop.price * 0.9));
+                return prevPlayers.filter(player => player.id !== playerId);
+            }
+            return prevPlayers;
         });
     }, []);
 
-    const handleDropPlayer = useCallback((playerId) => {
-        setAddedPlayers(prevPlayers => prevPlayers.filter(player => player.id !== playerId));
-    }, []);
-
-    // Change component type
     const handleTypeChange = (PlayerComponent) => {
         setCurrentType(() => PlayerComponent);
+    };
+
+    const handleAddCash = () => {
+        setShowDeveloper(true); // Show image
+        setCash(prevCash => prevCash + 500000);
+        setTimeout(() => setShowDeveloper(false), 5000); // Hide image after 5 seconds
     };
 
     const handleLogoClick = () => {
         navigate('/');
     };
+
+    const handleWinner = (score) => {
+        setShowWinner(true);
+        if (score > 350) {
+            // alert("Best Selection");
+            setWinnerImage(Excellent);
+            setTotalScore(0);
+            setAddedPlayers([]);
+        } else if (score > 200) {
+            // alert("Good Selection");
+            setWinnerImage(Good);
+        } else {
+            alert("Bad Selection");
+            setWinnerImage(null);
+        }
+        setTimeout(() => setShowWinner(false), 2000); // Hide image after 2 seconds
+    };
+
+    useEffect(() => {
+        const total = addedPlayers.reduce((sum, player) => sum + player.score, 0);
+        setTotalScore(total);
+    }, [addedPlayers]);
 
     return (
         <div className={styles.mainPage}>
@@ -44,10 +95,20 @@ const Lobby = () => {
                 <div className={styles.logo}>
                     <img onClick={handleLogoClick} src={logo} alt="Logo" />
                 </div>
-                <button>Add Cash</button>
-                <p className={styles.score}>{score}</p>
+                <button className={styles.cashValue}><img className={styles.cash} src={Money} alt="ADD Cash" />{cash}</button>
+                <img className={styles.addCash} onClick={handleAddCash} src={Money1} alt="ADD Cash" />
+                <p className={styles.score}>Score: {totalScore}</p>
             </div>
-
+            {showDeveloper && (
+                <div className={styles.developerImage}>
+                    <img src={Developer} alt="Developer" />
+                </div>
+            )}
+            {showWinner && winnerImage && (
+                <div className={styles.ResultImage}>
+                    <img src={winnerImage} alt="Result" />
+                </div>
+            )}
             <div className={styles.chooseGame}>
                 <button className={`${styles.btn} ${currentType === CricketPlayer ? styles.active : ''}`} 
                     onClick={() => handleTypeChange(CricketPlayer)}>Cricket</button>
@@ -58,15 +119,12 @@ const Lobby = () => {
                 <button className={`${styles.btn} ${currentType === BasketBallPlayer ? styles.active : ''}`} 
                     onClick={() => handleTypeChange(BasketBallPlayer)}>Basketball</button>
             </div>
-
             <div className={styles.show}>
                 <div className={styles.playerList}>
                     <h2>Players List</h2>
-                    {/* Render the component and pass handlers */}
                     {React.createElement(currentType, { onAddPlayer: handleAddPlayer, onDropPlayer: handleDropPlayer })}
                 </div>
-                <div className={styles.divider}>
-                </div>
+                <div className={styles.divider}></div>
                 {addedPlayers.length > 0 && <AddedPlayers players={addedPlayers} onDropPlayer={handleDropPlayer} />}
             </div>
         </div>

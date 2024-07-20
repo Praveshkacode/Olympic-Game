@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from "./Register.module.css";
 import logo from '../assets/logo.png';
 import p1 from '../assets/o4.jpg';
@@ -6,6 +6,9 @@ import p2 from '../assets/o3.png';
 import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
+  const[name,setName] = useState("")
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleLogoClick = () => {
@@ -13,8 +16,15 @@ const Register = () => {
   };
 
   const handleRegister = () => {
+
     navigate('/login');
   };
+
+  function validateForm() {
+
+    return email.length > 0 && password.length > 0 && name.length >0;
+
+  }
 
   return (
     <div className={styles.registerPage}>
@@ -28,10 +38,10 @@ const Register = () => {
           <img onClick={handleLogoClick} src={logo} alt="Logo" />
         </div>
         <h1 className={styles.registerHead}>Registration Form</h1>
-        <input className={styles.username} placeholder='Username/Email' type='text' />
-        <input className={styles.password} placeholder='Password' type='password' />
-        <input className={styles.password} placeholder='Confirm Password' type='password' />
-        <button className={styles.button} onClick={handleRegister}>Register</button>
+        <input className={styles.username} onChange={(e) => setName(e.target.value)} placeholder='Name' type='text' />
+        <input className={styles.email} onChange={(e) => setEmail(e.target.value)} placeholder='Email' type='text' />
+        <input className={styles.password} onChange={(e) => setPassword(e.target.value)}placeholder='Password' type='password' />
+        <button className={styles.button} disabled={!validateForm()} onClick={handleRegister}>Register</button>
       </div>
 
       <div className={styles.p2}>

@@ -18,6 +18,49 @@
     height: 40px;
 }
 
+.cash{
+    height: 20px;
+    margin: 0px;
+    width: 15px;
+}
+
+.cashValue{
+ padding-bottom: 10px;
+}
+
+.addCash{
+    height: 30px;
+}
+
+.developerImage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000; /* Ensure it appears on top */
+    transition: opacity 1s ease-in-out;
+}
+
+.developerImage img {
+    min-width: 200px; /* Adjust size as needed */
+    /* max-width: 470px;  developer */
+    height: auto;
+}
+.ResultImage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000; /* Ensure it appears on top */
+    transition: opacity 1s ease-in-out;
+}
+
+.ResultImage img {
+    min-width: 200px; /* Adjust size as needed */
+    max-width: 470px; /* Adjust size as needed */
+    min-height: 200px ;
+}
+
 .score{
     font-size: 25px;
     font-weight: 500;
@@ -43,8 +86,7 @@
 }
 
 .btn.active{
-    /* background-color: rgb(24, 164, 239); */
-    /* color: white; */
+
     font-weight: 700;
     border-bottom: 4px solid rgb(26, 180, 240);
 }
