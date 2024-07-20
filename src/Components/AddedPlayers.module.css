@@ -1,9 +1,9 @@
 .addedPlayers {
-    padding: 20px;
+    padding: 5px;
     background-color: #f5f5f5;
     border: 1px solid #ddd;
     border-radius: 5px;
-    margin-top: 20px;
+    /* margin-top: 20px; */
     /* min-width: 300px; */
 }
 

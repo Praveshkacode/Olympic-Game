@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
+src/Components/ResultPlayer.jsx
+src/Components/ResultPlayer.module.css
 
 # Editor directories and files
 .vscode/*
